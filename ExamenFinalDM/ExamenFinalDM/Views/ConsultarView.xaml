@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExamenFinalDM.ConsultarView">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Label Text="Esta pantalla se usa para consultar movimientos, tanto desde db en linea como local"
+                   FontSize="Large"
+                   HorizontalOptions="CenterAndExpand"
+                   HorizontalTextAlignment="Center"
+                   BackgroundColor="Yellow"/>
+            <StackLayout>
+                <Label Text="" FontSize="Large"/>
+                <Button x:Name="btnConONLINE" Text="consulta en linea" FontSize="Large" Clicked="BtnConONLINE_Clicked"/>
+                <Button x:Name="btnConOFFLINE" Text="consulta offline" FontSize="Large" Clicked="BtnConOFFLINE_Clicked"/>
+                <Button x:Name="btnAdelante" Text="A eliminar" FontSize="Large" Clicked="OnNextPageButtonClicked"/>
+                <Label Text="" FontSize="Large"/>
+                <Label Text="RESULTADOS" FontSize="Large" BackgroundColor="Yellow" HorizontalOptions="Center"/>
+                <Label Text="" FontSize="Large"/>
+                <ListView x:Name="pinchelista">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <!-- Here we make a Horizontal orientation with the help of StackLayout-->
+                                <StackLayout Orientation="Horizontal" Margin="5" HeightRequest="90">
+                                    <Grid>
+                                        <Label Text="{Binding ID}"/>
+                                        <Label Grid.Column="1" Text="{Binding TIPO}"  HorizontalOptions="Center"/>
+                                        <Label Grid.Column="2" Text="{Binding CONCEPTO}" HorizontalOptions="Center"/>
+                                        <Label Grid.Column="3" Text="{Binding VALOR}"  HorizontalOptions="Center"/>
+                                        <Label Grid.Column="4" Text="{Binding OBSERVACION}" HorizontalOptions="Center"/>
+                                        <Label Grid.Column="5" Text="{Binding RECURRENTE}" HorizontalOptions="Center"/>
+                                        <Label Grid.Column="6" Text="{Binding FECHA_REGISTRO}" HorizontalOptions="Center"/>
+                                        <Label Grid.Column="7" Text="{Binding EVIDENCIA}" HorizontalOptions="Center"/>
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

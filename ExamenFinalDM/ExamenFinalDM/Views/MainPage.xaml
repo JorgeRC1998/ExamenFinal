@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExamenFinalDM.Views.MainPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Place new controls here -->
+            <Label Text="Home!" 
+               FontSize="Large"
+               BackgroundColor="LightBlue"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Margin="5"
+               />
+
+            <StackLayout Margin="10">
+                <Label Text="En esta interfaz encontramos botones a las diferentes acciones que podremos hacer en nuestra aplicación"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Margin="10"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Large"
+                   BackgroundColor="Yellow"
+                   />
+                <Button x:Name="btnConsultar" Text="Consultar movimientos!" FontSize="Large" Clicked="OnNextPageButtonClicked"/>
+                <Button x:Name="btnInsertar" Text="Insertar movimientos!" FontSize="Large" Clicked="OnNextPageButtonClicked1"/>
+                <Button x:Name="btnEliminar" Text="Eliminar movimientos!" FontSize="Large" Clicked="OnNextPageButtonClicked2"/>
+                <Button x:Name="btnActualizar" Text="Actualizar movimientos!" FontSize="Large" Clicked="OnNextPageButtonClicked3"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

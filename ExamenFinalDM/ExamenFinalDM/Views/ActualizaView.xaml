@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExamenFinalDM.ActualizaView">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Label Text="En esta pantalla se permite actualizar los movimientos"
+                   HorizontalOptions="CenterAndExpand" 
+                   FontSize="Large"
+                   BackgroundColor="Yellow"/>
+            <Label Text="" FontSize="Large"/>
+            <Label Text="id a actualizar: " FontSize="Large"/>
+            <Entry Placeholder="Introduce el ID" x:Name="idAE"/>
+            <Label Text="Conceptos a actualizar: " FontSize="Large"/>
+            <Entry Placeholder="Introduce el concepto" x:Name="conAE"/>
+            <Label Text="" FontSize="Large"/>
+            <Label Text="Valor a actualizar: " FontSize="Large"/>
+            <Entry Placeholder="Introduce el Valor del movimiento" x:Name="val"/>
+            <Label Text="Detalles: " FontSize="Large"/>
+            <Entry Placeholder="Introduce detalles del movimiento" x:Name="det"/>
+            <Label Text="" FontSize="Large"/>
+            <Button Text="Actualizar por id" Clicked="Button_Clicked" FontSize="Large"/>
+            <Button Text="Actualizar por concepto" Clicked="Button_Clicked_1" FontSize="Large"/>
+            <Button Text="A home" Clicked="OnNextPageButtonClicked" FontSize="Large"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

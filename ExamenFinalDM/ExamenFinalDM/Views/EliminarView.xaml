@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExamenFinalDM.EliminarView">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Label Text="Esta interfaz permite eliminar movimientos" 
+                HorizontalOptions="CenterAndExpand" 
+                FontSize="Large"
+                BackgroundColor="Yellow"/>
+            <Label Text="" FontSize="Large"/>
+            <Label Text="id a eliminar: " FontSize="Large"/>
+            <Entry Placeholder="Introduce el ID" x:Name="idAE"/>
+            <Label Text="Conceptos a eliminar: " FontSize="Large"/>
+            <Entry Placeholder="Introduce el concepto" x:Name="conAE"/>
+            <Label Text="" FontSize="Large"/>
+            <Button Text="Eliminar" Clicked="Button_Clicked" FontSize="Large"/>
+            <Button Text="Eliminar por concepto" Clicked="Button_Clicked_1" FontSize="Large"/>
+            <Label Text="" FontSize="Large"/>
+            <Button Text="Eliminar local" Clicked="Button_Clicked_2" FontSize="Large"/>
+            <Button Text="Eliminar local por concepto" Clicked="Button_Clicked_3" FontSize="Large"/>
+            <Label Text="" FontSize="Large"/>
+            <Button x:Name="btnAdelante" Text="A actualizar" FontSize="Large" Clicked="OnNextPageButtonClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

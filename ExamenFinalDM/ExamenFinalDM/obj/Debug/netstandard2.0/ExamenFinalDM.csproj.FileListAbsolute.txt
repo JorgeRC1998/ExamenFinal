@@ -1,0 +1,16 @@
+C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM\bin\Debug\netstandard2.0\ExamenFinalDM.deps.json
+C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM\bin\Debug\netstandard2.0\ExamenFinalDM.dll
+C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM\bin\Debug\netstandard2.0\ExamenFinalDM.pdb
+C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM\obj\Debug\netstandard2.0\ExamenFinalDM.csproj.CoreCompileInputs.cache
+C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM\obj\Debug\netstandard2.0\ExamenFinalDM.AssemblyInfoInputs.cache
+C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM\obj\Debug\netstandard2.0\ExamenFinalDM.AssemblyInfo.cs
+C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM\obj\Debug\netstandard2.0\ExamenFinalDM.dll
+C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM\obj\Debug\netstandard2.0\ExamenFinalDM.pdb
+C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM\obj\Debug\netstandard2.0\Views\ActualizaView.xaml.g.cs
+C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM\obj\Debug\netstandard2.0\Views\ConsultarView.xaml.g.cs
+C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM\obj\Debug\netstandard2.0\Views\EliminarView.xaml.g.cs
+C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM\obj\Debug\netstandard2.0\Views\InsertarView.xaml.g.cs
+C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
+C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM\obj\Debug\netstandard2.0\ExamenFinalDM.csprojAssemblyReference.cache
