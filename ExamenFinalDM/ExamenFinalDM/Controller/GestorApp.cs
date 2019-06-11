@@ -16,7 +16,7 @@ namespace ExamenFinalDM.Controller
         {
             List<Movimiento> lista = new List<Movimiento>();
             int con = 0;
-            var client = new RestClient($"http://aa8eca9e.ngrok.io/API_FINAL/index.php/select");
+            var client = new RestClient($"http://f3474044.ngrok.io/API_FINAL/index.php/select");
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
@@ -71,21 +71,21 @@ namespace ExamenFinalDM.Controller
 
             var content = new FormUrlEncodedContent(values);
 
-            var response = await client.PostAsync("http://aa8eca9e.ngrok.io/API_FINAL/index.php/insertar", content);
+            var response = await client.PostAsync("http://f3474044.ngrok.io/API_FINAL/index.php/insertar", content);
 
             var responseString = await response.Content.ReadAsStringAsync();
         }
 
         public void eliminarReg (int id)
         {
-            var client = new RestClient("http://aa8eca9e.ngrok.io/API_FINAL/index.php/eliminar/" + id);
+            var client = new RestClient("http://f3474044.ngrok.io/API_FINAL/index.php/eliminar/" + id);
             var request = new RestRequest(Method.DELETE);
             IRestResponse response = client.Execute(request);
         }
 
         public void eliminarRegCon (string concepto)
         {
-            var client = new RestClient("http://aa8eca9e.ngrok.io/API_FINAL/index.php/eliminarCon/" + concepto);
+            var client = new RestClient("http://f3474044.ngrok.io/API_FINAL/index.php/eliminarCon/" + concepto);
             var request = new RestRequest(Method.DELETE);
             IRestResponse response = client.Execute(request);
         }
@@ -101,7 +101,7 @@ namespace ExamenFinalDM.Controller
 
             var content = new FormUrlEncodedContent(values);
 
-            var response = await client.PutAsync("http://aa8eca9e.ngrok.io/API_FINAL/index.php/actualizar/" + id, content);
+            var response = await client.PutAsync("http://f3474044.ngrok.io/API_FINAL/index.php/actualizar/" + id, content);
 
             var responseString = await response.Content.ReadAsStringAsync();
 
@@ -118,7 +118,7 @@ namespace ExamenFinalDM.Controller
 
             var content = new FormUrlEncodedContent(values);
 
-            var response = await client.PutAsync("http://aa8eca9e.ngrok.io/API_FINAL/index.php/actualizarCon/" + concepto, content);
+            var response = await client.PutAsync("http://f3474044.ngrok.io/API_FINAL/index.php/actualizarCon/" + concepto, content);
 
             var responseString = await response.Content.ReadAsStringAsync();
 

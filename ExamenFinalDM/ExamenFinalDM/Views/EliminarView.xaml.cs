@@ -22,17 +22,25 @@ namespace ExamenFinalDM
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            try
+            if (validarId() == true)
             {
-                GestorApp objGestor = new GestorApp();
-                int id = Convert.ToInt32(idAE.Text);
-                objGestor.eliminarReg(id);
-                mensaje = "Registro en línea borrado satisfactoriamente!";
-                DisplayAlert("Ayuda", mensaje, "OK");
-            }
-            catch
-            {
+                try
+                {
+                    GestorApp objGestor = new GestorApp();
+                    int id = Convert.ToInt32(idAE.Text);
+                    objGestor.eliminarReg(id);
+                    mensaje = "Registro en línea borrado satisfactoriamente!";
+                    DisplayAlert("Ayuda", mensaje, "OK");
+                }
+                catch
+                {
 
+                }
+                DisplayAlert("Exito", "Campos validados correctamente.", "OK");
+            }
+            else
+            {
+                DisplayAlert("Error", "Falta el parametro id.", "OK");
             }
         }
 
@@ -43,39 +51,81 @@ namespace ExamenFinalDM
 
         private void Button_Clicked_1(object sender, EventArgs e)
         {
-            try
+            if (validarConcepto() == true)
             {
-                GestorApp objGestor = new GestorApp();
-                string concept =conAE.Text;
-                objGestor.eliminarRegCon(concept);
-                mensaje = "Registros en línea borrados satisfactoriamente!";
-                DisplayAlert("Ayuda", mensaje, "OK");
+                try
+                {
+                    GestorApp objGestor = new GestorApp();
+                    string concept = conAE.Text;
+                    objGestor.eliminarRegCon(concept);
+                    mensaje = "Registros en línea borrados satisfactoriamente!";
+                    DisplayAlert("Ayuda", mensaje, "OK");
+                }
+                catch
+                {
+                    
+                }
+                DisplayAlert("Exito", "Campos validados correctamente.", "OK");
             }
-            catch
+            else
             {
-
+                DisplayAlert("Error", "Falta el parametro Concepto.", "OK");
             }
         }
 
         private void Button_Clicked_2(object sender, EventArgs e)
         {
-            try
+            if (validarId() == true)
             {
-                Conexion.Instancia.DeleteByID(Convert.ToInt32(idAE.Text));
-                mensaje = "Eliminado local exitoso!";
-                DisplayAlert("Ayuda", mensaje, "OK");
-            }
-            catch
-            {
+                try
+                {
+                    Conexion.Instancia.DeleteByID(Convert.ToInt32(idAE.Text));
+                    mensaje = "Eliminado local exitoso!";
+                    DisplayAlert("Ayuda", mensaje, "OK");
+                }
+                catch
+                {
 
+                }
+                DisplayAlert("Exito", "Campos validados correctamente.", "OK");
+            }
+            else
+            {
+                DisplayAlert("Error", "Falta el parametro id.", "OK");
             }
         }
 
         private void Button_Clicked_3(object sender, EventArgs e)
         {
-            Conexion.Instancia.DeleteByName(conAE.Text);
-            mensaje = "Eliminado local exitoso!";
-            DisplayAlert("Ayuda", mensaje, "OK");
+            if (validarConcepto() == true)
+            {
+                Conexion.Instancia.DeleteByName(conAE.Text);
+                mensaje = "Eliminado local exitoso!";
+                DisplayAlert("Ayuda", mensaje, "OK");
+                DisplayAlert("Exito", "Campos validados correctamente.", "OK");
+            }
+            else
+            {
+                DisplayAlert("Error", "Falta el parametro concepto.", "OK");
+            }
+        }
+
+        private bool validarId()
+        {
+            if (string.IsNullOrWhiteSpace(idAE.Text))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private bool validarConcepto()
+        {
+            if (string.IsNullOrWhiteSpace(conAE.Text))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

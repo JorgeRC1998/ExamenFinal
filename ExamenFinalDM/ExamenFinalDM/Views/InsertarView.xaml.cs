@@ -12,13 +12,13 @@ using Xamarin.Forms.Xaml;
 
 namespace ExamenFinalDM
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class InsertarView : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class InsertarView : ContentPage
+    {
         public string mensaje;
-		public InsertarView ()
-		{
-			InitializeComponent ();
+        public InsertarView()
+        {
+            InitializeComponent();
             mov.Items.Add("INGRESO");
             mov.Items.Add("GASTO");
             rec.Items.Add("SI");
@@ -27,16 +27,24 @@ namespace ExamenFinalDM
 
         private void BtnAgregar_Clicked(object sender, EventArgs e)
         {
-            try
+            if (validarFormulario() == true)
             {
-                GestorApp objGestor = new GestorApp();
-                objGestor.insertarMovimiento(mov.Items[mov.SelectedIndex], con.Items[con.SelectedIndex], Convert.ToDouble(val.Text), det.Text, rec.Items[rec.SelectedIndex], evi.Text);
-                mensaje = "Inserción en línea exitosa";
-                DisplayAlert("Ayuda", mensaje, "OK");
-            }
-            catch
-            {
+                try
+                {
+                    GestorApp objGestor = new GestorApp();
+                    objGestor.insertarMovimiento(mov.Items[mov.SelectedIndex], con.Items[con.SelectedIndex], Convert.ToDouble(val.Text), det.Text, rec.Items[rec.SelectedIndex], evi.Text);
+                    mensaje = "Inserción en línea exitosa";
+                    DisplayAlert("Ayuda", mensaje, "OK");
+                }
+                catch
+                {
 
+                }
+                DisplayAlert("Exito", "Todos tus campos cumplieron las validaciones.", "OK");
+            }
+            else
+            {
+                DisplayAlert("Error", "Uno o varios campos estan vacios.", "OK");
             }
         }
 
@@ -67,21 +75,58 @@ namespace ExamenFinalDM
 
         private void BtnAgregarLocal_Clicked(object sender, EventArgs e)
         {
-            try
+            if (validarFormulario() == true)
             {
-                Conexion.Instancia.addNew(mov.Items[mov.SelectedIndex], con.Items[con.SelectedIndex], Convert.ToDouble(val.Text), det.Text, rec.Items[rec.SelectedIndex], evi.Text);
-                mensaje = "Inserción local exitosa";
-                DisplayAlert("Ayuda", mensaje, "OK");
-            }
-            catch
-            {
+                try
+                {
+                    Conexion.Instancia.addNew(mov.Items[mov.SelectedIndex], con.Items[con.SelectedIndex], Convert.ToDouble(val.Text), det.Text, rec.Items[rec.SelectedIndex], evi.Text);
+                    mensaje = "Inserción local exitosa";
+                    DisplayAlert("Ayuda", mensaje, "OK");
+                }
+                catch
+                {
 
+                }
+                DisplayAlert("Exito", "Todos tus campos cumplieron las validaciones.", "OK");
             }
+            else
+            {
+                DisplayAlert("Error", "Uno o varios campos estan vacios.", "OK");
+            }          
         }
 
         async void OnNextPageButtonClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ConsultarView());
+        }
+
+        private bool validarFormulario()
+        {
+            if (string.IsNullOrWhiteSpace(val.Text))
+            {
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(det.Text))
+            {
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(mov.Items[mov.SelectedIndex]))
+            {
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(con.Items[con.SelectedIndex]))    
+            {
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(rec.Items[rec.SelectedIndex]))
+            {
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(evi.Text))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

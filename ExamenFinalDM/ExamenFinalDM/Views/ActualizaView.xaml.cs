@@ -23,19 +23,27 @@ namespace ExamenFinalDM
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            try
+            if (validarCampos() == true)
             {
-                GestorApp objGestor = new GestorApp();
-                double value = Convert.ToDouble(val.Text);
-                string obser = det.Text;
-                int id = Convert.ToInt32(idAE.Text);
-                objGestor.actualizarReg(id, value, obser);
-                mensaje = "Registro actualizado satisfactoriamente!";
-                DisplayAlert("Ayuda", mensaje, "OK");
-            }
-            catch
-            {
+                try
+                {
+                    GestorApp objGestor = new GestorApp();
+                    double value = Convert.ToDouble(val.Text);
+                    string obser = det.Text;
+                    int id = Convert.ToInt32(idAE.Text);
+                    objGestor.actualizarReg(id, value, obser);
+                    mensaje = "Registro actualizado satisfactoriamente!";
+                    DisplayAlert("Ayuda", mensaje, "OK");
+                }
+                catch
+                {
 
+                }
+                DisplayAlert("Exito", "Todos tus campos cumplieron las validaciones.", "OK");
+            }
+            else
+            {
+                DisplayAlert("Error", "Asegurate de llenar el id, valor y observacion.", "OK");
             }
         }
 
@@ -46,20 +54,62 @@ namespace ExamenFinalDM
 
         private void Button_Clicked_1(object sender, EventArgs e)
         {
-            try
+            if (validarCamposCon() == true)
             {
-                GestorApp objGestor = new GestorApp();
-                double value = Convert.ToDouble(val.Text);
-                string obser = det.Text;
-                string concepto = conAE.Text;
-                objGestor.actualizarRegCon(Convert.ToString(concepto), value, obser);
-                mensaje = "Registros actualizados satisfactoriamente!";
-                DisplayAlert("Ayuda", mensaje, "OK");
-            }
-            catch
-            {
+                try
+                {
+                    GestorApp objGestor = new GestorApp();
+                    double value = Convert.ToDouble(val.Text);
+                    string obser = det.Text;
+                    string concepto = conAE.Text;
+                    objGestor.actualizarRegCon(Convert.ToString(concepto), value, obser);
+                    mensaje = "Registros actualizados satisfactoriamente!";
+                    DisplayAlert("Ayuda", mensaje, "OK");
+                }
+                catch
+                {
 
+                }
+                DisplayAlert("Exito", "Todos tus campos cumplieron las validaciones.", "OK");
             }
+            else
+            {
+                DisplayAlert("Error", "Asegurate de llenar el concepto, valor y observacion.", "OK");
+            }
+        }
+
+        private bool validarCampos()
+        {
+            if (string.IsNullOrWhiteSpace(idAE.Text))
+            {
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(val.Text))
+            {
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(det.Text))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private bool validarCamposCon()
+        {
+            if (string.IsNullOrWhiteSpace(conAE.Text))
+            {
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(val.Text))
+            {
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(det.Text))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
