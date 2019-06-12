@@ -16,7 +16,7 @@ namespace ExamenFinalDM.Controller
         {
             List<Movimiento> lista = new List<Movimiento>();
             int con = 0;
-            var client = new RestClient($"http://f3474044.ngrok.io/API_FINAL/index.php/select");
+            var client = new RestClient($"http://cb94d004.ngrok.io/API_FINAL/index.php/select");
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
@@ -47,7 +47,7 @@ namespace ExamenFinalDM.Controller
         }
 
         public async void insertarMovimiento(string tipo, string concepto, double valor, string observacion, 
-            string recurrente, string evidencia)
+            string recurrente, string evidencia, int recurrencia)
         {
             DateTime fecha = DateTime.Now;
             string año = fecha.Year.ToString();
@@ -58,34 +58,60 @@ namespace ExamenFinalDM.Controller
             string segundo = fecha.Second.ToString();
             string consFecha = ($"{año}-{mes}-{dia}  {hora}:{minuto}:{segundo}");
 
-            var values = new Dictionary<string, string>
+            if (recurrencia > 0)
             {
-                {"TIPO", $"{tipo}" },
-                {"CONCEPTO", $"{concepto}" },
-                {"VALOR", $"{valor}" },
-                {"OBSERVACION", $"{observacion}" },
-                {"RECURRENTE", $"{recurrente}" },
-                {"FECHA_REGISTRO", $"{consFecha}" },
-                {"EVIDENCIA", $"{evidencia}" }
-            };
+                for(int i = 0; i < recurrencia; i++)
+                {
+                    int a = Convert.ToInt32(mes) + i;
+                    consFecha = ($"{año}-{dia}-{(Convert.ToString(a))}  {hora}:{minuto}:{segundo}");
+                    var values = new Dictionary<string, string>
+                    {
+                        {"TIPO", $"{tipo}" },
+                        {"CONCEPTO", $"{concepto}" },
+                        {"VALOR", $"{valor}" },
+                        {"OBSERVACION", $"{observacion}" },
+                        {"RECURRENTE", $"{recurrente}" },
+                        {"FECHA_REGISTRO", $"{consFecha}" },
+                        {"EVIDENCIA", $"{evidencia}" }
+                    };
 
-            var content = new FormUrlEncodedContent(values);
+                    var content = new FormUrlEncodedContent(values);
 
-            var response = await client.PostAsync("http://f3474044.ngrok.io/API_FINAL/index.php/insertar", content);
+                    var response = await client.PostAsync("http://cb94d004.ngrok.io/API_FINAL/index.php/insertar", content);
 
-            var responseString = await response.Content.ReadAsStringAsync();
+                    var responseString = await response.Content.ReadAsStringAsync();
+                }
+            }
+            else
+            {
+                var values = new Dictionary<string, string>
+                    {
+                        {"TIPO", $"{tipo}" },
+                        {"CONCEPTO", $"{concepto}" },
+                        {"VALOR", $"{valor}" },
+                        {"OBSERVACION", $"{observacion}" },
+                        {"RECURRENTE", $"{recurrente}" },
+                        {"FECHA_REGISTRO", $"{consFecha}" },
+                        {"EVIDENCIA", $"{evidencia}" }
+                    };
+                var content = new FormUrlEncodedContent(values);
+
+                var response = await client.PostAsync("http://cb94d004.ngrok.io/API_FINAL/index.php/insertar", content);
+
+                var responseString = await response.Content.ReadAsStringAsync();
+            }
         }
 
         public void eliminarReg (int id)
         {
-            var client = new RestClient("http://f3474044.ngrok.io/API_FINAL/index.php/eliminar/" + id);
+            var client = new RestClient("http://cb94d004.ngrok.io/API_FINAL/index.php/eliminar/" + id);
             var request = new RestRequest(Method.DELETE);
             IRestResponse response = client.Execute(request);
         }
 
         public void eliminarRegCon (string concepto)
         {
-            var client = new RestClient("http://f3474044.ngrok.io/API_FINAL/index.php/eliminarCon/" + concepto);
+            var client = new RestClient("http://cb94d004.ngrok.io/API_FINAL/index.php/eliminarCon/" + concepto);
             var request = new RestRequest(Method.DELETE);
             IRestResponse response = client.Execute(request);
         }
@@ -101,7 +127,7 @@ namespace ExamenFinalDM.Controller
 
             var content = new FormUrlEncodedContent(values);
 
-            var response = await client.PutAsync("http://f3474044.ngrok.io/API_FINAL/index.php/actualizar/" + id, content);
+            var response = await client.PutAsync("http://cb94d004.ngrok.io/API_FINAL/index.php/actualizar/" + id, content);
 
             var responseString = await response.Content.ReadAsStringAsync();
 
@@ -118,7 +144,7 @@ namespace ExamenFinalDM.Controller
 
             var content = new FormUrlEncodedContent(values);
 
-            var response = await client.PutAsync("http://f3474044.ngrok.io/API_FINAL/index.php/actualizarCon/" + concepto, content);
+            var response = await client.PutAsync("http://cb94d004.ngrok.io/API_FINAL/index.php/actualizarCon/" + concepto, content);
 
             var responseString = await response.Content.ReadAsStringAsync();
 

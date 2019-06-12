@@ -11,19 +11,24 @@
             <Label Text="" FontSize="Large"/>
             <Label Text="Tipo de Movimiento: " FontSize="Large"/>
             <Picker x:Name="mov" SelectedIndexChanged="Mov_SelectedIndexChanged"/>
-            <Label Text="Concepto: " FontSize="Large"/>
+            <Label Text="Concepto: " FontSize="Large" x:Name="lblcon"/>
             <Picker x:Name="con"/>
             <Label Text="Valor: " FontSize="Large"/>
             <Entry Placeholder="Introduce el Valor del movimiento" x:Name="val"/>
             <Label Text="Detalles: " FontSize="Large"/>
             <Entry Placeholder="Introduce detalles del movimiento" x:Name="det"/>
             <Label Text="Recurrente? " FontSize="Large"/>
-            <Picker x:Name="rec"/>
+            <Picker x:Name="rec" SelectedIndexChanged="Rec_SelectedIndexChanged"/>
             <!--<Label Text="Fecha: "/>
             <DatePicker x:Name="fec" DateSelected="Fec_DateSelected"/>-->
             <Label Text="Evidencia: " FontSize="Large"/>
             <Entry Placeholder="Ingresa una evidencia" x:Name="evi"/>
-            <Label Text="" FontSize="Large"/>   
+            <Label Text="" FontSize="Large"/>
+            <Label Text="Otro Ingreso?" x:Name="lblOTROx2" FontSize="Large"/>
+            <Picker x:Name="otroIn" SelectedIndexChanged="OtroIn_SelectedIndexChanged"/>
+            <Label Text="Otro Ingreso" x:Name="lblOTRO" FontSize="Large"/>
+            <Entry Placeholder="Introduce el concepto peersonalizado" x:Name="entCon" FontSize="Large"/>
+            <Entry Placeholder="Introduce el numero de meses" x:Name="recMes"/>
             <Button x:Name="btnAgregar" Text="Agregar nuevo" Clicked="BtnAgregar_Clicked" FontSize="Large"/>
             <Button x:Name="btnAgregarLocal" Text="Guardado local" Clicked="BtnAgregarLocal_Clicked" FontSize="Large"/>
             <Button x:Name="btnNavegar" Text="Ir a consultar mvtos" Clicked="OnNextPageButtonClicked" FontSize="Large"/>

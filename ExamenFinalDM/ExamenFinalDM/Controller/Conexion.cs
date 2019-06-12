@@ -41,29 +41,70 @@ namespace ExamenFinalDM.Controller
 
         public string EstadoDeMensaje;
 
-        public int addNew(string mov, string cto, double val, string obs, string rec, string evi)
+        public void addNew(string mov, string cto, double val, string obs, string rec, string evi, int recurrencia)
         {
             int result = 0;
-            try
+            DateTime fecha = DateTime.Now;
+            string año = fecha.Year.ToString();
+            string mes = fecha.Month.ToString();
+            string dia = fecha.Day.ToString();
+            decimal hora = (fecha.Hour - 1);
+            string minuto = fecha.Minute.ToString();
+            string segundo = fecha.Second.ToString();
+            string consFecha = ($"{año}-{mes}-{dia}  {hora}:{minuto}:{segundo}");
+
+            if (recurrencia > 0)
             {
-                result = con.Insert(new Movimiento()
+                for (int i = 0; i < recurrencia; i++)
                 {
-                    TIPO = mov,
-                    CONCEPTO = cto,
-                    VALOR = Convert.ToDouble(val),
-                    OBSERVACION = obs,
-                    RECURRENTE = rec,
-                    EVIDENCIA = evi
-                });
+                    int a = Convert.ToInt32(mes) + i;
+                    consFecha = ($"{año}-{dia}-{(Convert.ToString(a))}  {hora}:{minuto}:{segundo}");
+                    try
+                    {
+                        result = con.Insert(new Movimiento()
+                        {
+                            TIPO = mov,
+                            CONCEPTO = cto,
+                            VALOR = Convert.ToDouble(val),
+                            OBSERVACION = obs,
+                            RECURRENTE = rec,
+                            FECHA_REGISTRO = Convert.ToDateTime(consFecha),
+                            EVIDENCIA = evi
+                        });
 
-                EstadoDeMensaje = string.Format("Cantidad de filas afectadas: {0}", result);
+                        EstadoDeMensaje = string.Format("Cantidad de filas afectadas: {0}", result);
 
+                    }
+                    catch (Exception e)
+                    {
+                        EstadoDeMensaje = e.Message;
+                    }
+                }
             }
-            catch (Exception e)
+
+            else
             {
-                EstadoDeMensaje = e.Message;
+                try
+                {
+                    result = con.Insert(new Movimiento()
+                    {
+                        TIPO = mov,
+                        CONCEPTO = cto,
+                        VALOR = Convert.ToDouble(val),
+                        OBSERVACION = obs,
+                        RECURRENTE = rec,
+                        FECHA_REGISTRO = Convert.ToDateTime(consFecha),
+                        EVIDENCIA = evi
+                    });
+
+                    EstadoDeMensaje = string.Format("Cantidad de filas afectadas: {0}", result);
+
+                }
+                catch (Exception e)
+                {
+                    EstadoDeMensaje = e.Message;
+                }
             }
-            return result;
         }
 
         public IEnumerable<Movimiento> GetAllReg()

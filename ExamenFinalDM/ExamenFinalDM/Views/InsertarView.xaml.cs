@@ -23,29 +23,111 @@ namespace ExamenFinalDM
             mov.Items.Add("GASTO");
             rec.Items.Add("SI");
             rec.Items.Add("NO");
+            otroIn.Items.Add("SI");
+            otroIn.Items.Add("NO");
+            lblOTRO.IsVisible = false;
+            entCon.IsVisible = false;
+            recMes.IsVisible = false;
         }
 
         private void BtnAgregar_Clicked(object sender, EventArgs e)
         {
-            if (validarFormulario() == true)
+            int recurrencia = 0;
+            if (rec.Items[rec.SelectedIndex] == "NO")
             {
-                try
+                if (otroIn.Items[otroIn.SelectedIndex] == "SI")
                 {
-                    GestorApp objGestor = new GestorApp();
-                    objGestor.insertarMovimiento(mov.Items[mov.SelectedIndex], con.Items[con.SelectedIndex], Convert.ToDouble(val.Text), det.Text, rec.Items[rec.SelectedIndex], evi.Text);
-                    mensaje = "Inserción en línea exitosa";
-                    DisplayAlert("Ayuda", mensaje, "OK");
-                }
-                catch
-                {
+                    if (validarFormulario() == true)
+                    {
+                        try
+                        {
+                            GestorApp objGestor = new GestorApp();
+                            objGestor.insertarMovimiento(mov.Items[mov.SelectedIndex], entCon.Text, Convert.ToDouble(val.Text), det.Text, rec.Items[rec.SelectedIndex], evi.Text, recurrencia);
+                            mensaje = "Inserción en línea exitosa";
+                            DisplayAlert("Ayuda", mensaje, "OK");
+                        }
+                        catch
+                        {
 
+                        }
+                        DisplayAlert("Exito", "Todos tus campos cumplieron las validaciones.", "OK");
+                    }
+                    else
+                    {
+                        DisplayAlert("Error", "Uno o varios campos estan vacios.", "OK");
+                    }
                 }
-                DisplayAlert("Exito", "Todos tus campos cumplieron las validaciones.", "OK");
-            }
-            else
+                else
+                {
+                    if (validarFormulario() == true)
+                    {
+                        try
+                        {
+                            GestorApp objGestor = new GestorApp();
+                            objGestor.insertarMovimiento(mov.Items[mov.SelectedIndex], con.Items[con.SelectedIndex], Convert.ToDouble(val.Text), det.Text, rec.Items[rec.SelectedIndex], evi.Text, recurrencia);
+                            mensaje = "Inserción en línea exitosa";
+                            DisplayAlert("Ayuda", mensaje, "OK");
+                        }
+                        catch
+                        {
+
+                        }
+                        DisplayAlert("Exito", "Todos tus campos cumplieron las validaciones.", "OK");
+                    }
+                    else
+                    {
+                        DisplayAlert("Error", "Uno o varios campos estan vacios.", "OK");
+                    }
+                }
+            }else if(rec.Items[rec.SelectedIndex] == "SI")
             {
-                DisplayAlert("Error", "Uno o varios campos estan vacios.", "OK");
+                int numMeses = Convert.ToInt32(recMes.Text);
+                if (otroIn.Items[otroIn.SelectedIndex] == "SI")
+                {
+                    if (validarFormulario() == true)
+                    {
+                        try
+                        {
+                            GestorApp objGestor = new GestorApp();
+                            objGestor.insertarMovimiento(mov.Items[mov.SelectedIndex], entCon.Text, Convert.ToDouble(val.Text), det.Text, rec.Items[rec.SelectedIndex], evi.Text, numMeses);
+                            mensaje = "Inserción en línea exitosa";
+                            DisplayAlert("Ayuda", mensaje, "OK");
+                        }
+                        catch
+                        {
+
+                        }
+                        DisplayAlert("Exito", "Todos tus campos cumplieron las validaciones.", "OK");
+                    }
+                    else
+                    {
+                        DisplayAlert("Error", "Uno o varios campos estan vacios.", "OK");
+                    }
+                }
+                else
+                {
+                    if (validarFormulario() == true)
+                    {
+                        try
+                        {
+                            GestorApp objGestor = new GestorApp();
+                            objGestor.insertarMovimiento(mov.Items[mov.SelectedIndex], con.Items[con.SelectedIndex], Convert.ToDouble(val.Text), det.Text, rec.Items[rec.SelectedIndex], evi.Text, numMeses);
+                            mensaje = "Inserción en línea exitosa";
+                            DisplayAlert("Ayuda", mensaje, "OK");
+                        }
+                        catch
+                        {
+
+                        }
+                        DisplayAlert("Exito", "Todos tus campos cumplieron las validaciones.", "OK");
+                    }
+                    else
+                    {
+                        DisplayAlert("Error", "Uno o varios campos estan vacios.", "OK");
+                    }
+                }
             }
+            
         }
 
         private void Mov_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,24 +157,96 @@ namespace ExamenFinalDM
 
         private void BtnAgregarLocal_Clicked(object sender, EventArgs e)
         {
-            if (validarFormulario() == true)
+            int recurrencia = 0;
+            if (rec.Items[rec.SelectedIndex] == "NO")
             {
-                try
+                if (otroIn.Items[otroIn.SelectedIndex] == "NO")
                 {
-                    Conexion.Instancia.addNew(mov.Items[mov.SelectedIndex], con.Items[con.SelectedIndex], Convert.ToDouble(val.Text), det.Text, rec.Items[rec.SelectedIndex], evi.Text);
-                    mensaje = "Inserción local exitosa";
-                    DisplayAlert("Ayuda", mensaje, "OK");
-                }
-                catch
-                {
+                    if (validarFormulario() == true)
+                    {
+                        try
+                        {
+                            Conexion.Instancia.addNew(mov.Items[mov.SelectedIndex], con.Items[con.SelectedIndex], Convert.ToDouble(val.Text), det.Text, rec.Items[rec.SelectedIndex], evi.Text, recurrencia);
+                            mensaje = "Inserción local exitosa";
+                            DisplayAlert("Ayuda", mensaje, "OK");
+                        }
+                        catch
+                        {
 
+                        }
+                        DisplayAlert("Exito", "Todos tus campos cumplieron las validaciones.", "OK");
+                    }
+                    else
+                    {
+                        DisplayAlert("Error", "Uno o varios campos estan vacios.", "OK");
+                    }
                 }
-                DisplayAlert("Exito", "Todos tus campos cumplieron las validaciones.", "OK");
-            }
-            else
+                else if (otroIn.Items[otroIn.SelectedIndex] == "SI")
+                {
+                    if (validarFormulario() == true)
+                    {
+                        try
+                        {
+                            Conexion.Instancia.addNew(mov.Items[mov.SelectedIndex], entCon.Text, Convert.ToDouble(val.Text), det.Text, rec.Items[rec.SelectedIndex], evi.Text, recurrencia);
+                            mensaje = "Inserción local exitosa";
+                            DisplayAlert("Ayuda", mensaje, "OK");
+                        }
+                        catch
+                        {
+
+                        }
+                        DisplayAlert("Exito", "Todos tus campos cumplieron las validaciones.", "OK");
+                    }
+                    else
+                    {
+                        DisplayAlert("Error", "Uno o varios campos estan vacios.", "OK");
+                    }
+                }
+            }else if (rec.Items[rec.SelectedIndex] == "SI")
             {
-                DisplayAlert("Error", "Uno o varios campos estan vacios.", "OK");
-            }          
+                if (otroIn.Items[otroIn.SelectedIndex] == "NO")
+                {
+                    if (validarFormulario() == true)
+                    {
+                        try
+                        {
+                            Conexion.Instancia.addNew(mov.Items[mov.SelectedIndex], con.Items[con.SelectedIndex], Convert.ToDouble(val.Text), det.Text, rec.Items[rec.SelectedIndex], evi.Text, Convert.ToInt32(recMes.Text));
+                            mensaje = "Inserción local exitosa";
+                            DisplayAlert("Ayuda", mensaje, "OK");
+                        }
+                        catch
+                        {
+
+                        }
+                        DisplayAlert("Exito", "Todos tus campos cumplieron las validaciones.", "OK");
+                    }
+                    else
+                    {
+                        DisplayAlert("Error", "Uno o varios campos estan vacios.", "OK");
+                    }
+                }
+                else if (otroIn.Items[otroIn.SelectedIndex] == "SI")
+                {
+                    if (validarFormulario() == true)
+                    {
+                        try
+                        {
+                            Conexion.Instancia.addNew(mov.Items[mov.SelectedIndex], con.Items[con.SelectedIndex], Convert.ToDouble(val.Text), det.Text, rec.Items[rec.SelectedIndex], evi.Text, Convert.ToInt32(recMes.Text));
+                            mensaje = "Inserción local exitosa";
+                            DisplayAlert("Ayuda", mensaje, "OK");
+                        }
+                        catch
+                        {
+
+                        }
+                        DisplayAlert("Exito", "Todos tus campos cumplieron las validaciones.", "OK");
+                    }
+                    else
+                    {
+                        DisplayAlert("Error", "Uno o varios campos estan vacios.", "OK");
+                    }
+                }
+            }
         }
 
         async void OnNextPageButtonClicked(object sender, EventArgs e)
@@ -114,9 +268,19 @@ namespace ExamenFinalDM
             {
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(con.Items[con.SelectedIndex]))    
+            if (otroIn.Items[otroIn.SelectedIndex] == "NO")
             {
-                return false;
+                if (string.IsNullOrWhiteSpace(con.Items[con.SelectedIndex]))
+                {
+                    return false;
+                }
+            }
+            else if(otroIn.Items[otroIn.SelectedIndex] == "SI")
+            {
+                if (string.IsNullOrWhiteSpace(otroIn.Items[otroIn.SelectedIndex]))
+                {
+                    return false;
+                }
             }
             if (string.IsNullOrWhiteSpace(rec.Items[rec.SelectedIndex]))
             {
@@ -126,7 +290,40 @@ namespace ExamenFinalDM
             {
                 return false;
             }
+            if ((Convert.ToInt32(recMes.Text)>6))
+            {
+                return false;
+            }
             return true;
+        }
+
+        private void OtroIn_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(otroIn.Items[otroIn.SelectedIndex] == "SI")
+            {
+                lblOTRO.IsVisible = true;
+                entCon.IsVisible = true;
+                lblcon.IsVisible = false;
+                con.IsVisible = false;
+            }
+            else if(otroIn.Items[otroIn.SelectedIndex] == "NO")
+            {
+                lblcon.IsVisible = true;
+                con.IsVisible = true;
+                lblOTRO.IsVisible = false;
+                entCon.IsVisible = false;
+            }
+        }
+
+        private void Rec_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(rec.Items[rec.SelectedIndex] == "SI")
+            {
+                recMes.IsVisible = true;
+            }else if(rec.Items[rec.SelectedIndex] == "NO")
+            {
+                recMes.IsVisible = false;
+            }
         }
     }
 }

@@ -108,7 +108,5 @@ C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM.Android\ob
 C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM.Android\obj\Debug\81\android\assets\Xamarin.Forms.Core.pdb
 C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM.Android\obj\Debug\81\android\assets\Xamarin.Forms.Platform.Android.pdb
 C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM.Android\obj\Debug\81\android\assets\Xamarin.Forms.Xaml.pdb
-C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM\bin\Debug\netstandard2.0\ExamenFinalDM.dll
-C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM.Android\bin\Debug\ExamenFinalDM.dll.mdb
 C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM.Android\obj\Debug\81\linksrc\ExamenFinalDM.dll.mdb
 C:\Users\jorge\source\repos\ExamenFinalDM\ExamenFinalDM\ExamenFinalDM.Android\obj\Debug\81\linksrc\Plugin.Connectivity.dll.mdb
